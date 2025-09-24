@@ -1,0 +1,23 @@
+omkarpathak@omkarpathak-Inspiron-3542:~/Documents/
+Python-Programs$ python P37_HangmanGame.py 
+Guess the word! HINT: word is a name of a fruit
+_ _ _ _ _ 
+
+Enter a letter to guess: m
+_ _ m _ _ 
+Enter a letter to guess: o
+_ _ m o _ 
+Enter a letter to guess: l
+l _ m o _ 
+Enter a letter to guess: e
+l e m o _ 
+Enter a letter to guess: n
+l e m o n 
+Congratulations, You won!
+
+1.定义字符常量
+2.挑选随机单词
+3.一个循环
+4.接受输入函数（使用try except保证正确）
+5.判断比较函数
+6.改变显示函数
