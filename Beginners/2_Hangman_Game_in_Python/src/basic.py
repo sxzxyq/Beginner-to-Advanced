@@ -2,14 +2,15 @@ import random
 
 WELCOME_PROMPT = "Guess the word! HINT: word is a name of a fruit\n"
 SIGNAL_PROMPT = "_ _ _ _ _\n"
-START_PROMPT = "Enter a letter to guess:"
+START_PROMPT = "\nEnter a letter to guess:"
 ERROR_ISALPHA_PROMPT = "Please enter a letter!"
 ERROR_LEN_PROMPT = "Please enter only one letter!"
 ERROR_KEY_PROMPT = "Interruput!"
 ERROR_GUESSES = "\nWrong,please try again!\n"
+SUCCESS_PROMPT = "\nCongratulations!"
 
-#words = ["apple","banana","lemon","peach","bearbug"]
-words = ["lemon"]
+words = ["apple","banana","lemon","peach","bearbug"]
+#words = ["lemon"]
 
 def generate_word():
     word = random.choice(words)
@@ -22,20 +23,22 @@ def user_input():
             if guesses_word.isalpha() and len(guesses_word) == 1:
                 return guesses_word
             elif not guesses_word.isalpha():
-                return print(ERROR_ISALPHA_PROMPT)
+                print(ERROR_ISALPHA_PROMPT)
+                continue
             else:
-                return print(ERROR_LEN_PROMPT) 
+                print(ERROR_LEN_PROMPT)
+                continue 
         except KeyboardInterrupt:
             return print(ERROR_KEY_PROMPT)
 
 def word_print(extra_word:list,tool_word:str) -> None:
-    print(extra_word,tool_word)
+    #print(extra_word,tool_word)
     for num_3 in range(len(extra_word)):
-        print(num_3)
+        #print(num_3)
         if extra_word[num_3] == 1:
-            print(tool_word[num_3])
+            print(tool_word[num_3], end="")
         else:
-            print("_")
+            print("_", end="")
             
 def judge_print(tool_word:str,chances:int) -> None:
     extra_word = [0] * len(tool_word)
@@ -47,6 +50,9 @@ def judge_print(tool_word:str,chances:int) -> None:
                     extra_word[num_2] = 1
                     break
             word_print(extra_word,tool_word)
+            if not 0 in extra_word:
+                print(SUCCESS_PROMPT)
+                break
                 # if user_word == tool_word[num_2] and extra_word[num_2] != 1:
                 #     print(user_word)
                 #     extra_word[num_2] = 1 
